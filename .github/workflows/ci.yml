@@ -19,5 +19,8 @@ jobs:
       - name: build docker image
         run: docker build -t nextjs-demo:latest .
 
+      - name: tag docker image
+        run: docker tag nextjs-demo:latest iakv4/nextjs-demo:latest
+
       - name: push image to dockerhub
         run: docker push iakv4/nextjs-demo:latest
