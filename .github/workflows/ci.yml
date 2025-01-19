@@ -17,7 +17,7 @@ jobs:
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         
       - name: build docker image
-        run: docker build -t nextjs-demo-deployments .
+        run: docker build -t nextjs-demo:latest .
 
       - name: push image to dockerhub
-        run: docker push iakv4/nextjs-demo-deployments:latest
+        run: docker push iakv4/nextjs-demo:latest
