@@ -20,4 +20,4 @@ jobs:
         run: docker build -t nextjs-demo-deployments .
 
       - name: push image to dockerhub
-        run: docker push iakv4/nextjs-demo:latest
+        run: docker push iakv4/nextjs-demo-deployments:latest
