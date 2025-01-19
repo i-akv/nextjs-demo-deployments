@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: login dockerhub
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKET_PASSWORD: ${{secrets.DOCKET_PASSWORD}}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+      - name: build docker image
+        run: docker build -t nextjs-demo-deployments .
+
+      - name: push image to dockerhub
+        run: docker push iakv4/nextjs-demo:latest
