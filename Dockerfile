@@ -1,5 +1,3 @@
-# docker build . -t ghcr.io/i-akv/ignoumate-client:v1 --platform linux/amd64
-
 FROM oven/bun:alpine AS base
 
 # Install dependencies only when needed
@@ -12,7 +10,6 @@ WORKDIR /app
 COPY package.json bun.lockb ./
 RUN bun install --freeze-lock --verbose
 
-
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
@@ -23,7 +20,6 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_ENV=production
 
 RUN bun run build
 
