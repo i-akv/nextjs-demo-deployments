@@ -13,11 +13,14 @@ jobs:
       - name: login dockerhub
         env:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-          DOCKET_PASSWORD: ${{secrets.DOCKET_PASSWORD}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-
+        
       - name: build docker image
-        run: docker build -t nextjs-demo-deployments .
+        run: docker build -t nextjs-demo:latest .
+
+      - name: tag docker image
+        run: docker tag nextjs-demo:latest iakv4/nextjs-demo:latest
 
       - name: push image to dockerhub
         run: docker push iakv4/nextjs-demo:latest
